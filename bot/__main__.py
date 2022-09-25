@@ -66,7 +66,7 @@ def stats(update, context):
 def start(update, context):
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot is designed by @rahulkhatri137 to mirror your links to Google Drive and upload files to Telegram!
+This bot is designed to mirror your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMessage(start_string, context.bot, update)
@@ -110,13 +110,7 @@ def bot_help(update, context):
 /{BotCommands.UnzipMirrorCommand} [download_url][magnet_link] : starts mirroring and if downloaded file is any archive , extracts it to google drive
 /{BotCommands.ZipMirrorCommand} [download_url][magnet_link]: start mirroring and upload the archived (.zip) version of the download
 
-/{BotCommands.LeechCommand} [download_url][magnet_link]: Start mirroring the link to telegram
-/{BotCommands.UnzipLeechCommand} [download_url][magnet_link] : starts mirroring and if downloaded file is any archive , extracts it to telegram
-/{BotCommands.ZipLeechCommand} [download_url][magnet_link]: start mirroring and upload the archived (.zip) version of the download
-
 /{BotCommands.WatchCommand} [youtube-dl supported link]: Mirror through youtube-dl. Click /{BotCommands.WatchCommand} for more help
-/{BotCommands.LeechWatchCommand} Mirror Youtube-dl support link(Leech)"),
-/{BotCommands.LeechZipWatchCommand} Mirror Youtube playlist link as .zip(Leech)"),
 /{BotCommands.ZipWatchCommand} [youtube-dl supported link]: Mirror through youtube-dl and zip before uploading
 
 /{BotCommands.CancelMirror} Reply to the message by which the download was initiated and that download will be cancelled
@@ -132,17 +126,12 @@ def bot_help(update, context):
 /{BotCommands.AuthorizeCommand} Authorize a chat or a user to use the bot (Can only be invoked by owner of the bot)
 
 /{BotCommands.LogCommand} Get a log file of the bot. Handy for getting crash reports
-/{BotCommands.LeechSetCommand} Leech settings
-/{BotCommands.SetThumbCommand} Reply photo to set it as Thumbnail
 """
     sendMessage(help_string, context.bot, update)
 
 
 botcmds = [
     (f"{BotCommands.MirrorCommand}", "Start mirroring"),
-    (f"{BotCommands.LeechCommand}", "Start Leeching"),
-    (f"{BotCommands.UnzipLeechCommand}", "Extract files(Leech)"),
-    (f"{BotCommands.LeechWatchCommand}", "Mirror Youtube-dl support link(Leech)"),
     (f"{BotCommands.UnzipMirrorCommand}", "Extract files"),
     (f"{BotCommands.CloneCommand}", "Copy file/folder from GDrive"),
     (f"{BotCommands.DeleteCommand}", "Delete file from GDrive [owner only]"),
@@ -152,9 +141,7 @@ botcmds = [
     (f"{BotCommands.CancelAllCommand}", "Cancel all tasks [owner only]"),
     (f"{BotCommands.StatusCommand}", "Get mirror status"),
     (f"{BotCommands.StatsCommand}", "Bot usage stats"),
-    (f'{BotCommands.LeechSetCommand}','Leech settings'),
-    (f'{BotCommands.SetThumbCommand}','Set thumbnail'),
-]
+    ]
 
 
 def main():
